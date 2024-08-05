@@ -1,0 +1,12 @@
+/*
+{"key": "3850a6d81307abb9145ac78927fa4bda", "token": "cbfd45a5664a80c1a05091788f2b490d99ebb1719122d0651a1b226f588470fb", "name": "{checklistitemname}", "idList": "624dfc54e6a8d239c91ca776", "idCardSource": "65d3e089ad0ca85992b13826", "keepFromSource": "all", "pos": "top"}
+
+
+{"key": "3850a6d81307abb9145ac78927fa4bda", "token": "cbfd45a5664a80c1a05091788f2b490d99ebb1719122d0651a1b226f588470fb","url": "https://trello.com/c/gsId4Bzk"}
+*/
+
+
+
+//add the "Stories" checklist to the card,
+//add the "_Activity Name_ - Toggl | Linked" checklist to the card, and
+//add the "_Activity Name_ - Toggl | Unlinked" checklist to the card
