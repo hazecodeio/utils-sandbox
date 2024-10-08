@@ -1,7 +1,7 @@
 #!/bin/bash
 
 suffix=17
-sdk_home=/opt/langs/java/jdk17-current
+sdk_home=/opt/_langs/java/jdk17-current
 sdk_bin=$sdk_home/bin
 dst=/usr/bin
 
