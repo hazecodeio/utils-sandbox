@@ -11,6 +11,14 @@ import scala.sys.process._
   * Created by hsmak on 2/25/17.
   */
 
+/**
+ *
+ * bash$ sensors -j | jq 'to_entries | .[] | select(.key|contains("core")) | .value | to_entries | .[] | select(.key|contains("Core")) | .value | to_entries | .[] |  select(.key|contains("input")) | .value' | jq -s 'max'
+ *
+ * scala> (""" sensors -j """ #| """ jq 'to_entries | .[] | select(.key|contains("core")) | .value | to_entries | .[] | select(.key|contains("Core")) | .value | to_entries | .[] |  select(.key|contains("input")) | .value'""" #| """jq -s 'max'  """).!!.toDouble
+ *
+ *
+ */
 object FanCtl_pwm extends App {
 
   //  "sensors | grep \"Core\" | sed 's/.*:\\s*+\\(.*\\)  .*(.*/\\1/' | sed 's/[°C]//g' | sed 's/\\.0//g')"!
