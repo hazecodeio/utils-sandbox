@@ -14,18 +14,22 @@
 pwmFiles=$(ls /sys/devices/platform/dell_smm_hwmon/hwmon/hwmon*/pwm* | jq -Rs)
 echo $pwmFiles
 
+switch=0
+
 while  [ true ] ; do
 
 	coreTemp=$(sensors -j | jq 'to_entries | .[] | select(.key|contains("core")) | .value | to_entries | .[] | select(.key|contains("Core")) | .value | to_entries | .[] |  select(.key|contains("input")) | .value' | jq -s 'max%100');
 
 	echo $coreTemp;
 
-	if [ $coreTemp -gt 35 ]; then
+	if [ $coreTemp -gt 35 ] && [ $switch == 0 ]; then
 #	  echo true;
 	  echo $pwmFiles | jq -r | xargs -i sudo su -c 'echo 255 > {}'
-  else
+	  switch=1
+  elif [ $coreTemp -lt 36 ] && [ $switch == 1 ]; then
 #    echo false;
     echo $pwmFiles | jq -r | xargs -i sudo su -c 'echo 155 > {}'
+    switch=0
   fi
 
 sleep 10;
