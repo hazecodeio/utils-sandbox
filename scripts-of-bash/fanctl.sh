@@ -9,40 +9,24 @@
 # Description:       Enable service provided by fanCtrl.
 ### END INIT INFO
 
-# Records the CPU temp and writes it to a temporary file.
-tempCPU=0
+# Records the CPU temp and writes it to coreTemp temporary file.
 
-constMaxTemp=40
+pwmFiles=$(ls /sys/devices/platform/dell_smm_hwmon/hwmon/hwmon*/pwm* | jq -Rs)
+echo $pwmFiles
 
-fanHI=0
-fanLO=0
+while  [ true ] ; do
 
-while  [ 1 ] ; do
-	var=($(sensors | grep "Core" | sed 's/.*:\s*+\(.*\)  .*(.*/\1/' | sed 's/[°C]//g' | sed 's/\.0//g'))
+	coreTemp=$(sensors -j | jq 'to_entries | .[] | select(.key|contains("core")) | .value | to_entries | .[] | select(.key|contains("Core")) | .value | to_entries | .[] |  select(.key|contains("input")) | .value' | jq -s 'max%100');
 
-	for i in {0..11} ; do
-		if [[ ${var[i]} -gt $tempCPU ]]; then 
-			tempCPU=${var[i]}
-		fi
-	done
+	echo $coreTemp;
 
-	if [[ $tempCPU -gt $constMaxTemp ]]; then
-		if [[ "$fanHI" -eq 0 ]] ; then
-			eval "i8kfan 2 2"
-			fanHI=1
-			fanLO=0
-#			echo 'temp is high'
-		fi
-	else
-		if [[ "$fanLO" -eq 0 ]] ; then
-			eval "i8kfan 1 1"
-			fanHI=0
-			fanLO=1
-#			echo 'temp is low'
-		fi
-	fi
+	if [ $coreTemp -gt 35 ]; then
+#	  echo true;
+	  echo $pwmFiles | jq -r | xargs -i sudo su -c 'echo 255 > {}'
+  else
+#    echo false;
+    echo $pwmFiles | jq -r | xargs -i sudo su -c 'echo 155 > {}'
+  fi
 
-	tempCPU=0;
-	
-sleep 1;
+sleep 10;
 done
