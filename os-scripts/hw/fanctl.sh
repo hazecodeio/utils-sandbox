@@ -20,7 +20,7 @@ while  [ true ] ; do
 
 	coreTemp=$(sensors -j | jq 'to_entries | .[] | select(.key|contains("core")) | .value | to_entries | .[] | select(.key|contains("Core")) | .value | to_entries | .[] |  select(.key|contains("input")) | .value' | jq -s 'max%100');
 
-	echo $coreTemp;
+#	echo $coreTemp;
 
 	if [ $coreTemp -gt 35 ] && [ $switch == 0 ]; then
 #	  echo true;
