@@ -1,5 +1,5 @@
 # https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#passing-token-and-key-in-api-requests
-source ./_env-loader.sh
+source $(dirname $0)/_env-loader.sh
 
 export CHECKLIST_ID=????-
 

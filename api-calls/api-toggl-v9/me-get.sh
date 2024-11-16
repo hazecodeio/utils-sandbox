@@ -1,4 +1,4 @@
-source ./_env-loader.sh
+source $(dirname $0)/_env-loader.sh
 
 curl -v -u "$TOKEN_TOGGL" \
 	-X GET https://api.track.toggl.com/api/v9/me \

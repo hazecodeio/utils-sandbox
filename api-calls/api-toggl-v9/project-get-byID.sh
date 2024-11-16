@@ -1,4 +1,4 @@
-source ./_env-loader.sh
+source $(dirname $0)/_env-loader.sh
 
 #{"id":181557016,"name":"Chores"}
 

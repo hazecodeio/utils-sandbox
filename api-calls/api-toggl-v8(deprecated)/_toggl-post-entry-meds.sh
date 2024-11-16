@@ -1,4 +1,4 @@
-source ./_env-loader.sh
+source $(dirname $0)/_env-loader.sh
 
 curl -v -u "$TOKEN_TOGGL" \
 	-H "Content-Type: application/json" \

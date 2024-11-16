@@ -1,6 +1,6 @@
 #https://docs.virustotal.com/reference/scan-url
 
-source ./_env-loader.sh
+source $(dirname $0)/_env-loader.sh
 
 curl  --request POST \
       --url https://www.virustotal.com/api/v3/urls \
