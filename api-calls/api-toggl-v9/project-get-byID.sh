@@ -1,4 +1,5 @@
-source $(dirname $0)/_env-loader.sh
+CWD=$(echo $(realpath $0) | xargs dirname)
+source $CWD/_env-loader.sh
 
 #{"id":181557016,"name":"Chores"}
 
