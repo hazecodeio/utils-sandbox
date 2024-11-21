@@ -4,12 +4,11 @@
 set -euo pipefail
 
 function funinit() {
-  local CWD="$(echo $(realpath $0) | xargs dirname)"
+  local CWD="$(echo $(realpath ${0}) | xargs dirname)"
   source "${CWD}"/_env-loader.sh
 
   sudo ip netns add "${NS}"
-  sudo ip link add "${vIF}" link "${IF}" type macvlan mode bridge
-  #sudo ip link set address 00:11:22:33:44:55 dev "${vIF}"
+  sudo ip link add "${vIF}" link "${IF}" type ipvlan mode l2
   sudo ip link set dev "${vIF}" up
   sudo ip link set "${vIF}" netns "${NS}"
 
@@ -19,6 +18,11 @@ function funinit() {
 
   sudo ip netns exec "${NS}" ip addr add "${IP_HOST}" dev "${vIF}"
   sudo ip netns exec "${NS}" ip route add default via "${IP_GW}" dev "${vIF}"
+
+  sudo ip netns exec "${NS}" ip link
+  sudo ip netns exec "${NS}" ip a
+  sudo ip netns exec "${NS}" ip rout
+  sudo ip netns exec "${NS}" nmcli dev
 
   sudo nmcli connection reload
 
