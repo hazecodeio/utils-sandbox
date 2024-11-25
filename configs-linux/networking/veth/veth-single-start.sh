@@ -31,5 +31,5 @@ sudo sysctl -q net.ipv4.ip_forward=1
 #vopono_core::network::dns_config > Setting namespace "${NS}" DNS server to 8.8.8.8
 
 #Exec
-#NS=v_ns; sudo ip netns exec "${NS}" sudo -u "${USER}" bash
+#NS=v_ns; sudo -E ip netns exec "${NS}" sudo -E -u "${USER}" bash
 

@@ -21,7 +21,8 @@ function funinit() {
 
   sudo nmcli connection reload
 
-  #NS=ns0; sudo ip netns exec "${NS}" sudo -u haze bash
+  #NS=ns0; sudo -E ip netns exec "${NS}" sudo -E -u haze bash
 }
 
 funinit
+
