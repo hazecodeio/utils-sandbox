@@ -4,6 +4,7 @@
 set -euo pipefail
 
 function funinit() {
+
   local CWD="$(echo $(realpath ${0}) | xargs dirname)"
   source "${CWD}"/_env-loader.sh
 
@@ -22,6 +23,7 @@ function funinit() {
   sudo nmcli connection reload
 
   #NS=ns0; sudo -E ip netns exec "${NS}" sudo -E -u haze bash
+
 }
 
 funinit
