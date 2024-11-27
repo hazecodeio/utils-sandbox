@@ -4,6 +4,7 @@
 set -euo pipefail
 
 function funinit() {
+
   local CWD=$(echo $(realpath $0) | xargs dirname)
   source "${CWD}"/_env-loader.sh
 
@@ -12,7 +13,6 @@ function funinit() {
   sudo nmcli connection reload
 
   #Appending to existing NetworkManager config file: /etc/NetworkManager/conf.d/unmanaged.conf
-
 }
 
 funinit
