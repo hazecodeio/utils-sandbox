@@ -1,13 +1,25 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
+
+function jsonPayload() {
+
+  local timestamp="$(date "+%Y-%m-%dT%T"-06:00)"
+
+  cat << EOF
+  {
+      "description":"Meeting with possible clients",
+      "workspace_id":'"${WORKSPACE_ID}"',
+      "duration":300,
+      "start":"${timestamp}",
+      "project_id":180942037,
+      "created_with":"curl"
+  }
+EOF
+}
+
 curl -v -u "${TOKEN_TOGGL}" \
 	-H "Content-Type: application/json" \
-	-d  '{"description":"Meeting with possible clients",
-	      "workspace_id":4561855,
-	      "duration":300,
-	      "start":"2024-05-26T08:11:13.558395752Z",
-	      "project_id":180942037,
-	      "created_with":"curl"}' \
-	-X POST 'https://api.track.toggl.com/api/v9/workspaces/4561855/time_entries'
+	-d  "$(jsonPayload)" \
+	-X POST 'https://api.track.toggl.com/api/v9/workspaces/'"${WORKSPACE_ID}"'/time_entries'
 
