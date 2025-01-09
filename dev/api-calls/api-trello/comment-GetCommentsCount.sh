@@ -15,4 +15,4 @@ curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token
       -X GET \
       --url "https://api.trello.com/1/cards/"${CARD_ID}"" \
       | jq \
-#      | jq '{comments: .badges.comments}'
+      | jq '{comments: .badges.comments}'

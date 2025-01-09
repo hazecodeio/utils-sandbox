@@ -9,23 +9,12 @@ CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
 CARD_ID=ee6N8GbE
-ACTIONS_LIMIT=100
+#idAction=677cc5b0c7134ba05cb4cb90
 
-
-OUT="$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
-      -X GET \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=commentCard,text&actions_limit=${ACTIONS_LIMIT}" \
-      | jq -cr ".actions.[].id")"
+      -X DELETE \
+      --url "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
 
-echo $OUT
 
-for idAction in $OUT
-do
-  curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
-        -H "Accept: application/json" \
-        -H "Content-Type: application/json" \
-        -X DELETE \
-        --url "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
-done
