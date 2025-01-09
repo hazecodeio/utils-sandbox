@@ -2,19 +2,12 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-CARD_ID=ugJwkxmU
-CARD_ID=UAHsXfjc
-CARD_ID=SvJ6mWD9
-
-CARD_ID=ojNqvWxB
-CARD_ID=ee6N8GbE
 CARD_ID=xDLppR3n
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
-      -X GET \
+      -X DELETE \
       --url "https://api.trello.com/1/cards/"${CARD_ID}"" \
-      | jq \
-      | jq '.name'
+#      | jq \
 #      | jq '{comments: .badges.comments}'

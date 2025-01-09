@@ -9,7 +9,8 @@ CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
 CARD_ID=ee6N8GbE
-ACTIONS_LIMIT=1000
+ACTIONS_LIMIT=10
+ACTIONS=commentCard,text #,copyCommentCard
 
 timeStart=$(date)
 countBefore=$(./comment-GetCommentsCount.sh | jq .comments)
@@ -18,7 +19,7 @@ OUT="$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oaut
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=commentCard,text&actions_limit=${ACTIONS_LIMIT}" \
+      --url "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=${ACTIONS}&actions_limit=${ACTIONS_LIMIT}" \
       | jq -cr '.actions.[].id')"
 
 echo $OUT | jq -crR 'split(" ")'
