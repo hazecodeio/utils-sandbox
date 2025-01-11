@@ -7,6 +7,6 @@ export BOARD_ID="5f21eea50f40e30520c6cda3"
 export LIST_NAME="Dump"
 export LIST_ID="62978c0194afec07a10b04d3"
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
-      --url "https://api.trello.com/1/boards/5f21eea50f40e30520c6cda3/lists" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
+      --URL "https://api.trello.com/1/boards/5f21eea50f40e30520c6cda3/lists" \
       | jq '.[] | select(.name == "Tasks - ToDo") | {name: .name, id: .id}'

@@ -7,5 +7,5 @@ source "${CWD}"/_env-loader.sh
 
 curl  -H 'Accept: application/json' \
       -X GET \
-      --url "https://trello.com/1/authorize?expiration=never&scope=read,write,account&response_type=token&key=${KEY_TRELLO}" \
+      --URL "https://trello.com/1/authorize?expiration=never&scope=read,write,account&response_type=token&key=${TRELLO_KEY}" \
 #      | jq

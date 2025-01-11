@@ -13,10 +13,10 @@ ACTIONS_LIMIT=10
 
 date
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=commentCard,text,copyCommentCard&actions_limit=${ACTIONS_LIMIT}" \
+      --URL "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=commentCard,text,copyCommentCard&actions_limit=${ACTIONS_LIMIT}" \
       | jq \
       | jq '.actions[].id'

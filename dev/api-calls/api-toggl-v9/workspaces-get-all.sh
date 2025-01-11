@@ -6,6 +6,6 @@ source "${CWD}"/_env-loader.sh
 #"name": "HazeWS"
 
 
-curl -v -u "${TOKEN_TOGGL}" \
+curl -v -u "${TOGGL_TOKEN}" \
 	-X GET 'https://api.track.toggl.com/api/v9/workspaces' \
-  | jq  '.[]'
+#  | jq  '.[]'

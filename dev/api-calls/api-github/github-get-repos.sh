@@ -2,8 +2,8 @@ CWD=$(echo $(realpath "${0}") | xargs dirname)
 #echo "${CWD}"
 source "${CWD}"/_env-loader.sh
 
-curl  -H "Authorization: token "${TOKEN_GITHUB}"" \
+curl  -H "Authorization: token "${GITHUB_TOKEN}"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --url 'https://api.github.com/user/repos' \
+      --URL 'https://api.github.com/user/repos' \

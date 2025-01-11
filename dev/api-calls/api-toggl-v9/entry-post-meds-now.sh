@@ -18,7 +18,7 @@ function jsonPayload() {
 EOF
 }
 
-curl -v -u "${TOKEN_TOGGL}" \
+curl -v -u "${TOGGL_TOKEN}" \
 	-H "Content-Type: application/json" \
 	-d  "$(jsonPayload)" \
 	-X POST 'https://api.track.toggl.com/api/v9/workspaces/'"${WORKSPACE_ID}"'/time_entries'

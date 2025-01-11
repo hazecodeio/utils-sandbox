@@ -34,6 +34,6 @@ EOF
 
 
 curl -X POST 'https://api.track.toggl.com/reports/api/v3/workspace/'"${WORKSPACE_ID}"'/search/time_entries' \
-  -v -u "${TOKEN_TOGGL}" \
+  -v -u "${TOGGL_TOKEN}" \
   -H "Content-Type: application/json" \
   -d "$(jsonPayload)" | jq

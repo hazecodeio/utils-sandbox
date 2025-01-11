@@ -18,11 +18,11 @@ echo $OUT | jq -crR 'split(" ") | length'
 
 for cardID in $OUT
 do
-  curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+  curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
         -X DELETE \
-        --url "https://api.trello.com/1/cards/"${cardID}""
+        --URL "https://api.trello.com/1/cards/"${cardID}""
 done
 
 timeEnd=$(date)

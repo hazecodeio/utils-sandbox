@@ -4,5 +4,5 @@ source "${CWD}"/_env-loader.sh
 #"id": 4535479,
 #"name": "HazeOrg"
 
-curl -v -u "${TOKEN_TOGGL}" \
+curl -v -u "${TOGGL_TOKEN}" \
 	-X GET 'https://api.track.toggl.com/api/v9/me/organizations'

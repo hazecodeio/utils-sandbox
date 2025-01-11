@@ -15,22 +15,22 @@ ACTIONS=commentCard,text #,copyCommentCard
 timeStart=$(date)
 countBefore=$(./comment-GetCommentsCount.sh | jq .comments)
 
-OUT="$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+OUT="$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=${ACTIONS}&actions_limit=${ACTIONS_LIMIT}" \
+      --URL "https://api.trello.com/1/cards/"${CARD_ID}"?fields=id&actions=${ACTIONS}&actions_limit=${ACTIONS_LIMIT}" \
       | jq -cr '.actions.[].id')"
 
 echo $OUT | jq -crR 'split(" ")'
 
 for idAction in $OUT
 do
-  curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+  curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
         -X DELETE \
-        --url "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
+        --URL "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
 done
 
 countAfter=$(./comment-GetCommentsCount.sh | jq .comments)

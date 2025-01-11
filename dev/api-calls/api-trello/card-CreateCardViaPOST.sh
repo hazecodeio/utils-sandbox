@@ -21,11 +21,11 @@ cat <<EOF
 EOF
 }
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X POST \
-      --url "https://api.trello.com/1/cards?idList=62978c0194afec07a10b04d3" \
+      --URL "https://api.trello.com/1/cards?idList=62978c0194afec07a10b04d3" \
       -d "$(jsonPayload)" | jq
 
 

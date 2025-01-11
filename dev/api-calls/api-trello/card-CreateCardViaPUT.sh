@@ -11,11 +11,11 @@ CARD_ID=65dffbc3098712790568192b
 
 
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H 'Accept: application/json' \
       -H 'Content-Type: application/json' \
       -X PUT \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"" \
+      --URL "https://api.trello.com/1/cards/"${CARD_ID}"" \
       -d '{
             "name": "1234",
             "cover": {

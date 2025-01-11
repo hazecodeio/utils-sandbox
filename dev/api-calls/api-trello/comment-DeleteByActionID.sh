@@ -11,10 +11,10 @@ source "${CWD}"/_env-loader.sh
 CARD_ID=ee6N8GbE
 idAction=6682fdd99d48574c321b345d
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X DELETE \
-      --url "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
+      --URL "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
 
 

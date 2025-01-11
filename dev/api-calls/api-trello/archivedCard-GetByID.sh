@@ -7,10 +7,10 @@ FILTER=closed
 # Valid values: all, closed, none, open, visible
 # closed == archived
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --url "https://api.trello.com/1/boards/${BOARD_ID}/cards/${FILTER}" \
+      --URL "https://api.trello.com/1/boards/${BOARD_ID}/cards/${FILTER}" \
       | jq \
 #      | jq '.[].closed'

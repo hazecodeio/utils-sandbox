@@ -4,8 +4,8 @@ source "${CWD}"/_env-loader.sh
 
 export CHECKLIST_ID=????-
 
-curl  -H "Authorization: OAuth oauth_consumer_key=\"${KEY_TRELLO}\", oauth_token=\"${TOKEN_TRELLO}\"" \
+curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H 'Accept: application/json' \
       -X GET \
-      --url "https://api.trello.com/1/checklists/{id}/checkItems" \
+      --URL "https://api.trello.com/1/checklists/{id}/checkItems" \
       | jq
