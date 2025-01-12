@@ -2,10 +2,11 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-export BOARD_NAME="QueerFolxCode-Tracking"
-export BOARD_ID="5f21eea50f40e30520c6cda3"
-export LIST_NAME="Dump"
-export LIST_ID="62978c0194afec07a10b04d3"
+BOARD_NAME="QueerFolxCode-Tracking"
+BOARD_ID="5f21eea50f40e30520c6cda3"
+LIST_NAME="Dump"
+LIST_ID="62978c0194afec07a10b04d3"
+CARD_ID=65e0e893303ca7db117b3e03
 
 
 jsonPayload(){
@@ -23,6 +24,6 @@ curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token
       -H 'Accept: application/json' \
       -H 'Content-Type: application/json' \
       -X POST \
-      --URL 'https://api.trello.com/1/cards/65e0e893303ca7db117b3e03/attachments' \
+      --URL "https://api.trello.com/1/cards/${CARD_ID}/attachments" \
       -d "$(jsonPayload)" \
-      | jq
+#      | jq

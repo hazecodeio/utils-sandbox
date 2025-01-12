@@ -7,5 +7,5 @@ CHECKLIST_ID=????
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H 'Accept: application/json' \
       -X GET \
-      --URL "https://api.trello.com/1/checklists/${CHECKLIST_ID}" \
+      --URL "https://api.trello.com/1/checklists/${CHECKLIST_ID}/checkItems" \
       | jq

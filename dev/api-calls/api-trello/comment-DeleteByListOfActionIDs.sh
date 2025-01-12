@@ -13,7 +13,7 @@ ACTIONS_LIMIT=10
 ACTIONS=commentCard,text #,copyCommentCard
 
 timeStart=$(date)
-countBefore=$(./comment-GetCommentsCount.sh | jq .comments)
+countBefore=$(.card-GetCommentsCount.sh | jq .comments)
 
 OUT="$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
@@ -33,7 +33,7 @@ do
         --URL "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
 done
 
-countAfter=$(./comment-GetCommentsCount.sh | jq .comments)
+countAfter=$(.card-GetCommentsCount.sh | jq .comments)
 
 timeEnd=$(date)
 

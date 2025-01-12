@@ -9,7 +9,7 @@ FILTER=closed
 
 
 timeStart=$(date)
-countBefore=$(./comment-GetCommentsCount.sh | jq .comments)
+countBefore=$(.card-GetCommentsCount.sh | jq .comments)
 
 
 OUT=$(./archivedCard-GetByID.sh | jq -cr '.[].id')
@@ -33,7 +33,4 @@ timeEnd=$(date)
 echo '{}' | jq -r \
   --arg S "${timeStart}" \
   --arg E "${timeEnd}" \
-  '{
-      timeStart: $S,
-      timeEnd: $E,
-  }'
+  '{timeStart: $S, timeEnd: $E}'
