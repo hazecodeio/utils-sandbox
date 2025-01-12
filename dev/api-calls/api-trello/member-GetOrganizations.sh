@@ -10,5 +10,5 @@ curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --URL "https://trello.com/1/Members/${USERNAME}/organizations" \
+      --URL "https://api.trello.com/1/members/${USERNAME}/organizations" \
       | jq \
