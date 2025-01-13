@@ -2,10 +2,6 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-USERNAME="me"
-#USERNAME="hazecodeio"
-USERID=
-
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \

@@ -2,13 +2,11 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-FIELDS=id,name,displayName
-#FIELDS=all
-
+URLS=/members/me,/members/me/organizations
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --URL "https://api.trello.com/1/members/${USERNAME}/organizations?fields=${FIELDS}" \
+      --URL "https://api.trello.com/1/batch?urls=${URLS}" \
       | jq \

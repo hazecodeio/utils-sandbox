@@ -12,7 +12,7 @@ timeStart=$(date)
 countBefore=$(.card-GetCommentsCount.sh | jq .comments)
 
 
-OUT=$(./archivedCard-GetByID.sh | jq -cr '.[].id')
+OUT=$(.board-GetArchivedCards.sh | jq -cr '.[].id')
 
 echo $OUT | jq -crR 'split(" ") | length'
 
