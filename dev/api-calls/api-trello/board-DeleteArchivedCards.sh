@@ -2,17 +2,15 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-BOARD_ID=Tc9Cdnbv
+BOARD_ID=5b0c36886df89b91a195f6cb
 FILTER=closed
 # Valid values: all, closed, none, open, visible
 # closed == archived
 
 
 timeStart=$(date)
-countBefore=$(.card-GetCommentsCount.sh | jq .comments)
 
-
-OUT=$(.board-GetArchivedCards.sh | jq -cr '.[].id')
+OUT=$(./board-GetArchivedCards.sh | jq -cr '.[].id')
 
 echo $OUT | jq -crR 'split(" ") | length'
 
@@ -22,7 +20,7 @@ do
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
         -X DELETE \
-        --URL "https://api.trello.com/1/cards/"${cardID}""
+        --URL "https://api.trello.com/1/cards/${cardID}"
 done
 
 timeEnd=$(date)
@@ -31,6 +29,6 @@ timeEnd=$(date)
 #echo ${timeEnd}
 
 echo '{}' | jq -r \
-  --arg S "${timeStart}" \
-  --arg E "${timeEnd}" \
-  '{timeStart: $S, timeEnd: $E}'
+  --arg TS "${timeStart}" \
+  --arg TE "${timeEnd}" \
+  '{timeStart: $TS, timeEnd: $TE}'

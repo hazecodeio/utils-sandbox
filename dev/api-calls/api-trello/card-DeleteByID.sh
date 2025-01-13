@@ -8,6 +8,6 @@ curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X DELETE \
-      --URL "https://api.trello.com/1/cards/"${CARD_ID}"" \
-#      | jq \
+      --URL "https://api.trello.com/1/cards/${CARD_ID}?fields=all" \
+      | jq \
 #      | jq '{comments: .badges.comments}'

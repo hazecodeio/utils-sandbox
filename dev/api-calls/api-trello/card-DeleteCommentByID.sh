@@ -15,6 +15,6 @@ curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X DELETE \
-      --URL "https://api.trello.com/1/cards/"${CARD_ID}"/actions/"${idAction}"/comments"
+      --URL "https://api.trello.com/1/cards/${CARD_ID}/actions/${idAction}/comments"
 
 

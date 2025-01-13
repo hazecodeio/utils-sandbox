@@ -8,13 +8,15 @@ CARD_ID=SvJ6mWD9
 
 CARD_ID=ojNqvWxB
 CARD_ID=ee6N8GbE
-CARD_ID=xDLppR3n
+
+#FIELDS=all
+FIELDS=id,name
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --URL "https://api.trello.com/1/cards/"${CARD_ID}"" \
+      --URL "https://api.trello.com/1/cards/${CARD_ID}?fields=${FIELDS}" \
       | jq \
-      | jq '.name'
+#      | jq '.name'
 #      | jq '{comments: .badges.comments}'

@@ -2,7 +2,7 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-FIELDS=id,name,idOrganization
+FIELDS=id,name,idOrganization,shortLink,url,closed
 #FIELDS=all
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \

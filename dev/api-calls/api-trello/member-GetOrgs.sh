@@ -2,7 +2,7 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-FIELDS=id,name,displayName
+FIELDS=id,name,displayName,link,url
 #FIELDS=all
 
 
