@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /etc/profile.d/jdk.sh
+source /etc/profile.d/_jdk.sh
 
 find "${JAVA_HOME}"/bin -type f -regextype posix-extended -regex '(./|/).*' | grep --color -iE '[a-Z]+\.[a-Z]+$' -v | grep --color -iE '[a-Z]+$' -o | xargs echo -n | jq -R 'split(" ") | .[]' | sudo -- xargs -i update-alternatives --remove-all {}
 

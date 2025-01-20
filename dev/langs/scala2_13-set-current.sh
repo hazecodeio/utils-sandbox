@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /etc/profile.d/scala.sh
+source /etc/profile.d/_scala.sh
 
 find "${SCALA_HOME}"/bin -type f -regextype posix-extended -regex '(./|/).*' | grep --color -iE '[a-Z]+\.[a-Z]+$' -v | grep --color -iE '[a-Z]+$' -o | xargs echo -n | jq -R 'split(" ") | .[]' | sudo -- xargs -i update-alternatives --remove-all {}
 

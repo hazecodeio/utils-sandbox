@@ -1,7 +1,7 @@
 #!/bin/bash
 
-suffix=3
-sdk_home=/opt/_langs/scala/scala3-current
+suffix=3-lts
+sdk_home=/opt/_langs/scala/scala3-lts
 sdk_bin="${sdk_home}"/bin
 dst=/usr/bin
 
