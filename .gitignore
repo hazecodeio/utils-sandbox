@@ -1,6 +1,8 @@
 **/_env-*.properties
 **/_temp*
 
+_etc/
+
 **/target
 **/.idea
 **/*.iml
