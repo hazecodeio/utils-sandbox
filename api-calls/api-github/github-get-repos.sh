@@ -6,4 +6,4 @@ curl  -H "Authorization: token "${GITHUB_TOKEN}"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --URL 'https://api.github.com/user/repos' \
+      --URL "${GITHUB_BASE_URL}"/user/repos \
