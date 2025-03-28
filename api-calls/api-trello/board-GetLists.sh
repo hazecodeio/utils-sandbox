@@ -13,4 +13,4 @@ FILTER=closed
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       --URL "https://api.trello.com/1/boards/${BOARD_ID}/lists/${FILTER}?fields=${FIELDS}" \
-      | jq \
+      | jq -Rr \
