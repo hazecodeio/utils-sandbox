@@ -4,11 +4,19 @@ source "${CWD}"/_env-loader.sh
 
 BOARD_ID="5f21eea50f40e30520c6cda3"
 
+FIELDS=all
+#FIELDS=id,name,closed,url,idBoard,idOrganization
+
+FILTER=all
+# Valid values: all, closed, none, open, visible
+# closed == archived
+
+
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
       -X GET \
-      --URL "https://api.trello.com/1/boards/"${BOARD_ID}"/cards" \
-      | jq \
+      --URL "https://api.trello.com/1/boards/${BOARD_ID}/cards/${FILTER}?fields=${FIELDS}" \
+      | jq -Rr \
 #      | jq --arg BOARD_NAME "${BOARD_NAME}" \
 #      '.[] | select(.name == $BOARD_NAME) | {name: .name, id: .id}'
