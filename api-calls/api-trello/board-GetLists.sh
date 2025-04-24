@@ -8,8 +8,12 @@ LIST_NAME="Dump"
 LIST_ID="62978c0194afec07a10b04d3"
 
 
-FIELDS=id,name,url,idOrganization,idBoard,closed
-FILTER=closed
+FIELDS=all
+#FIELDS=id,name,closed,url,idBoard,idOrganization
+
+FILTER=all
+# Valid values: all, closed, none, open, visible
+# closed == archived
 
 curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
       --URL "https://api.trello.com/1/boards/${BOARD_ID}/lists/${FILTER}?fields=${FIELDS}" \
