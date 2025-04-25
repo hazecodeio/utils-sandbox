@@ -2,7 +2,9 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-BOARD_ID="5f21eea50f40e30520c6cda3"
+BOARD_NAME="Desktop"
+BOARD_ID="xZEcS7Kw"
+BOARD_ID="5b0c36886df89b91a195f6cb"
 
 FIELDS=all
 #FIELDS=id,name,closed,url,idBoard,idOrganization
