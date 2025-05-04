@@ -12,7 +12,7 @@ CARD_ID=ee6N8GbE
 ACTIONS_LIMIT=10
 ACTIONS=commentCard,text #,copyCommentCard
 
-LIST_ID_DST="680a69d5cc24e2caf45ddd97"
+LIST_ID_DST="680e6ead7c26953e820d4449"
 
 timeStart=$(date)
 
@@ -21,7 +21,7 @@ timeStart=$(date)
 
 #FIELDS=all
 #QUERY=folate
-QUERY=board:5b0c36886df89b91a195f6cb+ssri
+QUERY=board:5b0c36886df89b91a195f6cb+smrt
 
 PARTIAL=true
 MODELTYPES=cards
@@ -46,20 +46,20 @@ OUT=$(curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth
       -H "Content-Type: application/json" \
       -X GET \
       --URL "https://api.trello.com/1/search?query=${QUERY}&partial=${PARTIAL}&modeltypes=${MODELTYPES}&board_fields=${BOARD_FIELDS}&board_organization=${BOARD_ORGANIZATION}&board_organization_fields=${BOARD_ORGANIZATION_FIELDS}&card_fields=${CARD_FIELDS}&cards_limit=${CARDS_LIMIT}&cards_page=${CARDS_PAGE}&card_board=${CARD_BOARD}&card_list=${CARD_LIST}&member_fields=${MEMBER_FIELDS}&organization_fields=${ORGANIZATION_FIELDS}" \
-      | jq -cr '.cards[].id')
+      | jq -cr '.cards[].name')
 
 
 
 echo $OUT | jq -crR 'split(" ")'
 
-for cardId in $OUT
-do
-  curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
-        -H "Accept: application/json" \
-        -H "Content-Type: application/json" \
-        -X PUT \
-        --URL "https://api.trello.com/1/cards/${cardId}?idList=${LIST_ID_DST}"
-done
+#for cardId in $OUT
+#do
+#  curl  -H "Authorization: OAuth oauth_consumer_key=\"${TRELLO_KEY}\", oauth_token=\"${TRELLO_TOKEN}\"" \
+#        -H "Accept: application/json" \
+#        -H "Content-Type: application/json" \
+#        -X PUT \
+#        --URL "https://api.trello.com/1/cards/${cardId}?idList=${LIST_ID_DST}"
+#done
 
 timeEnd=$(date)
 
