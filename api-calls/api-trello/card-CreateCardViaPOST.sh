@@ -2,10 +2,10 @@
 CWD=$(echo $(realpath "${0}") | xargs dirname)
 source "${CWD}"/_env-loader.sh
 
-export BOARD_NAME="QueerFolxCode-Tracking"
-export BOARD_ID="5f21eea50f40e30520c6cda3"
-export LIST_NAME="Dump"
-export LIST_ID="62978c0194afec07a10b04d3"
+BOARD_NAME="QueerFolxCode-Tracking"
+BOARD_ID="5f21eea50f40e30520c6cda3"
+LIST_NAME="Dump"
+LIST_ID="62978c0194afec07a10b04d3"
 
 jsonPayload(){
 cat <<EOF
