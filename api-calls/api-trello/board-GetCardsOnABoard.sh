@@ -8,6 +8,7 @@ BOARD_ID="5b0c36886df89b91a195f6cb"
 
 FIELDS=all
 #FIELDS=id,name,closed,url,idBoard,idOrganization
+#FIELDS=id,name,url,desc
 
 FILTER=all
 # Valid values: all, closed, none, open, visible

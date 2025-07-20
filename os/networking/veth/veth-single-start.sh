@@ -33,7 +33,7 @@ function funinit() {
   #vopono_core::network::dns_config > Setting namespace "${NS}" DNS server to 8.8.8.8
 
   #Exec
-  #NS=v_ns; sudo -E ip netns exec "${NS}" sudo -E -u "${USER}" bash
+  #sudo -E ip netns exec "${NS}" sudo -E -u "${USER}" bash
 
 }
 
